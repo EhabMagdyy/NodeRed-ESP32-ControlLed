@@ -9,8 +9,8 @@
 
 #define LedPin      2                           // ESP32 in-board led pin
 
-const char* ssid = "2001";                      // My Wifi SSID
-const char* password = "19821968";              // My Wifi Password
+const char* ssid = "2001";                      // Change this to your Wifi SSID
+const char* password = "19821968";              // Change this to your Wifi Password
 const char* mqtt_server = "test.mosquitto.org"; // Mosquitto Server URL
 
 WiFiClient espClient;
@@ -45,9 +45,9 @@ void callback(char* topic, byte* payload, unsigned int length)
 
     for(int i = 0 ; i < length; i++){ msg = (char)payload[i]; }
     Serial.println(msg);
+    
     if('1' == msg){ digitalWrite(LedPin, HIGH); }
     else if('2' == msg){ digitalWrite(LedPin, LOW); }
-
 }
 
 void reconnect() 
